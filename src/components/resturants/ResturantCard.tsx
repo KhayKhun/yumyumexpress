@@ -1,9 +1,6 @@
 
-interface Props {
-    
-}
 
-const ResturantCard = (props: Props) => {
+const ResturantCard = () => {
     return (
         <div>
             

@@ -4,11 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import type { sellerType, foodType } from "../../constants/global.types";
 import DetailFoodCard from "../foods/DetailFoodCard";
-import { BsStarFill, BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { BsStarFill, BsBookmark } from "react-icons/bs";
 import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 
 const getCounts = (message: string, foods: foodType[]) => {
   const counts = foods.map((food) => food.count);

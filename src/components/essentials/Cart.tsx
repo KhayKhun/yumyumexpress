@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { BsBag } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { useSelectedFoodStore } from "../../states/foodState";

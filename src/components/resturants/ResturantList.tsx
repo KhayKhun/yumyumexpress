@@ -1,9 +1,5 @@
 
-interface Props {
-    
-}
-
-const ResturantList = (props: Props) => {
+const ResturantList = () => {
     return (
         <div>
             res list

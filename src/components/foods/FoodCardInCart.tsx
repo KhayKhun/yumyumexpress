@@ -1,7 +1,6 @@
 import type { foodType } from "../../constants/global.types";
 import { BsDash, BsPlus} from "react-icons/bs";
 import { useSelectedFoodStore } from "../../states/foodState";
-import { useEffect } from "react";
 
 type Props = {
   foodData: foodType;
