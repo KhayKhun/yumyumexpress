@@ -12,15 +12,15 @@ const Cart = ({ name, address }: any) => {
     (state: any): [] => state.selectedFoods
   );
 
-  const filteredFoods = selectedFoods.filter(
+  const filteredFoods = selectedFoods?.filter(
     (food: foodType) => food.count > 0
   );
 
   const subTotal = filteredFoods
-    .map((f: foodType) => {
+    ?.map((f: foodType) => {
       return f.price * f.count;
     })
-    .reduce((a, b) => {
+    ?.reduce((a, b) => {
       return a + b;
     }, 0);
 
@@ -57,7 +57,7 @@ const Cart = ({ name, address }: any) => {
         <h1 className="w-full flex justify-between">
           <span>Items: </span>
           <span className="font-semibold tracking-wide">
-            {filteredFoods.length}
+            {filteredFoods?.length}
           </span>
         </h1>
         <h1 className="w-full flex justify-between">
@@ -76,10 +76,10 @@ const Cart = ({ name, address }: any) => {
           </span>
         </h1>
         <button
-          disabled={filteredFoods.length === 0}
+          disabled={filteredFoods?.length === 0}
           onClick={() => alert("hi")}
           className={` text-white w-full p-2 rounded-lg  ${
-            filteredFoods.length === 0
+            filteredFoods?.length === 0
               ? "bg-gray-500"
               : "bg-primary-green hover:bg-green-500"
           }`}

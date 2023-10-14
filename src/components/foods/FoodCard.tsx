@@ -29,7 +29,7 @@ const FoodCard = ({ foodData }: Props) => {
 
   return (
     <li className="border flex rounded-lg overflow-hidden">
-      <div className="w-[150px] h-[120px] bg-gray-300">
+      <div className="w-[150px] h-full bg-gray-300">
         <img
           src={foodData.image}
           alt="food image"

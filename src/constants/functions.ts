@@ -5,7 +5,7 @@ export function toSlug(str : string | undefined) {
 export function merge(newArr: any[], oldArr: any[]) {
   // Create a mapping of IDs from the old array to their corresponding counts
   const idToCountMap = new Map();
-  oldArr.forEach((item) => {
+  oldArr?.forEach((item) => {
     idToCountMap.set(item.id, item.count);
   });
 

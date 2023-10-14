@@ -15,17 +15,17 @@ const DetailFoodCard = ({ foodData }: Props) => {
   return (
     <li
     id={foodData.id.toString()}
-      className={`border flex items-center px-2 rounded-lg overflow-hidden  ${
+      className={`border flex items-center overflow-hidden rounded-lg  ${
         foodData.count > 0
           ? "outline outline-1 outline-green-500 bg-green-50 opacity-50"
           : "bg-white"
       }`}
     >
-      <div className="w-[150px] h-[150px]">
+      <div className="w-[150px] h-full">
         <img
           src={foodData.image}
           alt="food image"
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-cover"
         />
       </div>
       {/* text area */}

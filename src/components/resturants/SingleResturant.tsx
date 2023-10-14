@@ -8,15 +8,15 @@ import { BsStarFill, BsBookmark } from "react-icons/bs";
 import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
+import Header from "../essentials/Header";
 // import { useSearchParams } from "react-router-dom";
 
 const getCounts = (message: string, foods: foodType[]) => {
-  const counts = foods.map((food) => food.count);
+  const counts = foods?.map((food) => food.count);
   console.log(message, "==>", counts);
 };
 
 const SingleResturant = () => {
-  
   // const [searchParams,setSearchParams] = useSearchParams();
   // const popup = searchParams.get("popup");
 
@@ -67,6 +67,7 @@ const SingleResturant = () => {
       navigate("/foods");
       return;
     }
+    localStorage.setItem("lastResturant", data[0].name);
     setSeller(data[0]);
   }
   async function fetchFoods() {
@@ -83,11 +84,10 @@ const SingleResturant = () => {
       navigate("/foods");
       return;
     }
-    const savedFoods: any= localStorage.getItem("selectedFoods");
+    const savedFoods: any = localStorage.getItem("selectedFoods");
     const res = merge(data, JSON.parse(savedFoods));
-    
+
     setSelectedFoods(res);
-    
   }
 
   useEffect(() => {
@@ -102,6 +102,7 @@ const SingleResturant = () => {
 
   return (
     <main className="flex w-screen bg-gray-100">
+      <Header/>
       <section className="w-[64%]">
         {/* Head */}
         <div className="relative w-full p-[40px] bg-primary-green bg-opacity-10">
@@ -133,7 +134,7 @@ const SingleResturant = () => {
         {/* Foods */}
         <ul className="grid grid-cols-2 px-[40px] py-3 gap-3">
           {selectedFoods?.map((food: foodType) => (
-            <DetailFoodCard key={food.id} foodData={food}/>
+            <DetailFoodCard key={food.id} foodData={food} />
           ))}
         </ul>
       </section>
