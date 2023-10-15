@@ -32,7 +32,7 @@ const FoodCard = ({ foodData }: Props) => {
       <div className="w-[150px] h-full bg-gray-300">
         <img
           src={foodData.image}
-          alt="food image"
+          alt=""
           className="w-full h-full object-cover"
         />
       </div>
@@ -52,7 +52,7 @@ const FoodCard = ({ foodData }: Props) => {
         <div className="w-full flex flex-row-reverse justify-between">
           <Link
             to={{pathname : `/resturants/${toSlug(seller?.name)}`,search : `?popup=none`}}
-            className="text-primary-green flex font-semibold text-sm items-center gap-3 border border-primary-green rounded-lg p-2"
+            className="hover:text-primary-green text-white transition-all duration-100 bg-primary-green hover:bg-white flex font-semibold text-sm items-center gap-3 border-0 hover:border border-primary-green rounded-lg p-2"
           >
             {seller?.name} <BsShopWindow />
           </Link>

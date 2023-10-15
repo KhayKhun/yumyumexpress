@@ -3,26 +3,28 @@ import { FiEdit } from "react-icons/fi";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { foodType } from "../../constants/global.types";
 import FoodCardInCart from "../foods/FoodCardInCart";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 const Cart = ({ name, address }: any) => {
-  const deliFee = 500;
+  const deliFee = useMemo(() => 500,[]);
   const addressRef = useRef<any>(null);
   const selectedFoods = useSelectedFoodStore(
     (state: any): [] => state.selectedFoods
   );
 
-  const filteredFoods = selectedFoods?.filter(
-    (food: foodType) => food.count > 0
-  );
+  const filteredFoods = useMemo(()=>{
+    return selectedFoods?.filter((food: foodType) => food.count > 0);
+  },[selectedFoods])
 
-  const subTotal = filteredFoods
-    ?.map((f: foodType) => {
-      return f.price * f.count;
-    })
-    ?.reduce((a, b) => {
-      return a + b;
-    }, 0);
+  const subTotal = useMemo(() => {
+    return filteredFoods
+      ?.map((f: foodType) => {
+        return f.price * f.count;
+      })
+      ?.reduce((a, b) => {
+        return a + b;
+      }, 0);
+  },[filteredFoods])
 
   return (
     <main className=" w-full h-full bg-white border-l border-primary-green px-3 flex flex-col gap-2">

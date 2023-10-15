@@ -9,6 +9,7 @@ import {
 import FoodsPage from "./pages/foods.tsx";
 import ResturantsPage from "./pages/resturants.tsx";
 import SingleResturant from "./components/resturants/SingleResturant.tsx";
+import ProfilePage from "./pages/profile.tsx";
 
 const MarginGap = () => <div className="mb-[60px]" />;
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "foods",
     element: <FoodsPage/>,
+  },
+  {
+    path: "profile",
+    element: <ProfilePage/>,
   },
   {
     path : "resturants",

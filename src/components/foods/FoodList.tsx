@@ -16,8 +16,6 @@ const FoodList = () => {
   const [pegination,setPegination] = useState(0);
   const [hasMore,setHasMore] = useState(true);
 
-  console.log('state => ',foods.length);
-
   async function getFoods() {
     const { data, error } = await supabase
       .from("products")
@@ -28,7 +26,6 @@ const FoodList = () => {
       return;
     }
     if(data.length !== 0){
-      console.log(data)
       updateFoods(data);
     }else{
       setHasMore(false);

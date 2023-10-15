@@ -5,16 +5,12 @@ import { useNavigate } from "react-router-dom";
 import type { sellerType, foodType } from "../../constants/global.types";
 import DetailFoodCard from "../foods/DetailFoodCard";
 import { BsStarFill, BsBookmark } from "react-icons/bs";
+import { RiArrowLeftLine } from "react-icons/ri";
 import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
 import Header from "../essentials/Header";
 // import { useSearchParams } from "react-router-dom";
-
-const getCounts = (message: string, foods: foodType[]) => {
-  const counts = foods?.map((food) => food.count);
-  console.log(message, "==>", counts);
-};
 
 const SingleResturant = () => {
   // const [searchParams,setSearchParams] = useSearchParams();
@@ -34,8 +30,6 @@ const SingleResturant = () => {
   const selectedFoods = useSelectedFoodStore(
     (state: any) => state.selectedFoods
   );
-
-  getCounts("normal", selectedFoods);
 
   useEffect(() => {
     const savedSelectedFoods: any = localStorage.getItem("selectedFoods");
@@ -102,10 +96,19 @@ const SingleResturant = () => {
 
   return (
     <main className="flex w-screen bg-gray-100">
-      <Header/>
+      <Header />
       <section className="w-[64%]">
         {/* Head */}
         <div className="relative w-full p-[40px] bg-primary-green bg-opacity-10">
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="text-lg text-primary-green flex items-center"
+          >
+            <RiArrowLeftLine />
+            <span className="text-sm">Back</span>
+          </button>
           {seller?.image && (
             <img
               src={seller?.image}
