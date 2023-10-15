@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type { foodType, sellerType } from "../../constants/global.types";
 import supabase from "../../../utils/supabase";
-import { BsShopWindow, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { toSlug } from "../../constants/functions";
+import { ResturantIcon, StarFillIcon } from "../essentials/Icons";
 
 type Props = {
   foodData: foodType;
@@ -54,10 +54,10 @@ const FoodCard = ({ foodData }: Props) => {
             to={{pathname : `/resturants/${toSlug(seller?.name)}`,search : `?popup=none`}}
             className="hover:text-primary-green text-white transition-all duration-100 bg-primary-green hover:bg-white flex font-semibold text-sm items-center gap-3 border-0 hover:border border-primary-green rounded-lg p-2"
           >
-            {seller?.name} <BsShopWindow />
+            {seller?.name} <ResturantIcon />
           </Link>
           <span className="flex items-center gap-2 ">
-            <BsStarFill className="text-amber-600 font-lg" />
+            <StarFillIcon className="text-amber-600 font-lg" />
             4.5
           </span>
         </div>

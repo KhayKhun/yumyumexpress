@@ -1,11 +1,10 @@
 import { useEffect, useRef, useMemo } from "react";
-import { RiHeart3Line } from "react-icons/ri";
-import { BsCart2 } from "react-icons/bs";
 import { useSelectedFoodStore } from "../../states/foodState";
 import type { foodType } from "../../constants/global.types";
 import { Link } from "react-router-dom";
 import AuthComponent from "../auth/AuthComponent";
 import { toSlug } from "../../constants/functions";
+import { CartIcon, HeartLineIcon } from "./Icons";
 
 const Header = () => {
   const firstRender = useRef(true);
@@ -42,13 +41,13 @@ const Header = () => {
       <ul className="flex gap-7 items-center text-2xl">
         <AuthComponent />
         <Link to="/favorites">
-          <RiHeart3Line />
+          <HeartLineIcon />
         </Link>
         <Link
           to={lastResturantSlug() !== "" ? lastResturantSlug() : "/foods"}
           className="relative"
         >
-          <BsCart2 />
+          <CartIcon/>
           <div
             className={`absolute top-[-10px] right-[-10px] bg-red-600 rounded-full w-[20px] h-[20px] text-white text-sm flex justify-center items-center ${
               filteredFoods?.length === 0 && "hidden"

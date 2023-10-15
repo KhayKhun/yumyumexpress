@@ -4,12 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import type { sellerType, foodType } from "../../constants/global.types";
 import DetailFoodCard from "../foods/DetailFoodCard";
-import { BsStarFill, BsBookmark } from "react-icons/bs";
-import { RiArrowLeftLine } from "react-icons/ri";
 import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
 import Header from "../essentials/Header";
+import { BackButton, HeartLineIcon, StarFillIcon } from "../essentials/Icons";
 // import { useSearchParams } from "react-router-dom";
 
 const SingleResturant = () => {
@@ -100,15 +99,7 @@ const SingleResturant = () => {
       <section className="w-[64%]">
         {/* Head */}
         <div className="relative w-full p-[40px] bg-primary-green bg-opacity-10">
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-            className="text-lg text-primary-green flex items-center"
-          >
-            <RiArrowLeftLine />
-            <span className="text-sm">Back</span>
-          </button>
+          <BackButton/>
           {seller?.image && (
             <img
               src={seller?.image}
@@ -121,7 +112,7 @@ const SingleResturant = () => {
             <h1 className="text-3xl font-bold tracking-wide">{seller?.name}</h1>
             <p>{seller?.address}</p>
             <button className="hover:underline flex items-center gap-1">
-              <BsStarFill className="text-amber-500" />
+              <StarFillIcon className="text-amber-500" />
               4.5 (25)
             </button>
             <div className="flex gap-1">
@@ -129,7 +120,7 @@ const SingleResturant = () => {
             </div>
             <div className="w-full flex justify-end">
               <button className="flex gap-2 items-center text-green-800 border border-green-800 p-2 rounded-lg">
-                Save Resturant <BsBookmark className="" />
+                Save Resturant <HeartLineIcon className="" />
               </button>
             </div>
           </div>

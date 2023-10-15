@@ -1,9 +1,9 @@
-import { BsBag } from "react-icons/bs";
-import { FiEdit } from "react-icons/fi";
+
 import { useSelectedFoodStore } from "../../states/foodState";
 import { foodType } from "../../constants/global.types";
 import FoodCardInCart from "../foods/FoodCardInCart";
 import { useMemo, useRef } from "react";
+import { EditIcon, ShoppingBagIcon } from "./Icons";
 
 const Cart = ({ name, address }: any) => {
   const deliFee = useMemo(() => 500,[]);
@@ -29,7 +29,7 @@ const Cart = ({ name, address }: any) => {
   return (
     <main className=" w-full h-full bg-white border-l border-primary-green px-3 flex flex-col gap-2">
       <h1 className="flex gap-2 font-semibold mx-auto text-xl items-center text-primary-green">
-        My Cart <BsBag className="" />
+        My Cart <ShoppingBagIcon/>
       </h1>
       <p className="text-gray-700">
         From:{" "}
@@ -47,7 +47,7 @@ const Cart = ({ name, address }: any) => {
           disabled
         />
         <button>
-          <FiEdit />
+          <EditIcon />
         </button>
       </div>
       <ul className="overflow-y-auto p-4 min-h-[100px] h-[40vh] border-t border-b bg-gray-50">

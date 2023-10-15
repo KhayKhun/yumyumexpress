@@ -1,8 +1,8 @@
 import supabase from "../../../utils/supabase";
 import { useEffect } from "react";
 import { useAuthStore } from "../../states/authState";
-import { RiUser3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { UserIcon } from "../essentials/Icons";
 
 function AuthComponent() {
   const user = useAuthStore((state: any) => state.user);
@@ -38,7 +38,7 @@ function AuthComponent() {
   if (user) {
     return (
       <Link to={{ pathname: "/profile", search: "?edit=false" }}>
-        <RiUser3Line />
+        <UserIcon />
       </Link>
     );
   } else {

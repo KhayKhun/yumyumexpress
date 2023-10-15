@@ -1,6 +1,6 @@
 import type { foodType } from "../../constants/global.types";
-import { BsDash, BsPlus} from "react-icons/bs";
 import { useSelectedFoodStore } from "../../states/foodState";
+import { DashIcon, PlusIcon } from "../essentials/Icons";
 
 type Props = {
   foodData: foodType;
@@ -47,7 +47,7 @@ const FoodCardInCart = ({ foodData }: Props) => {
               }}
               className="text-primary-green font-semibold text-sm"
             >
-              <BsDash className="text-2xl" />
+              <DashIcon className="text-2xl" />
             </button>
             <p className="text-primary-green text-sm">{foodData.count}</p>
             <button
@@ -57,7 +57,7 @@ const FoodCardInCart = ({ foodData }: Props) => {
               }}
               className="text-primary-green font-semibold text-sm"
             >
-              <BsPlus className="text-2xl" />
+              <PlusIcon className="text-2xl" />
             </button>
           </div>
           <span className=" text-gray-700 font-semibold text-sm tracking-wide">

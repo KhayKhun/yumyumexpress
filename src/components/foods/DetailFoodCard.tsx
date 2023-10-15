@@ -1,6 +1,6 @@
 import type { foodType } from "../../constants/global.types";
-import { BsStarFill, BsPlus, BsX } from "react-icons/bs";
 import { useSelectedFoodStore } from "../../states/foodState";
+import { PlusIcon, StarFillIcon, XMarkIcon } from "../essentials/Icons";
 
 type Props = {
   foodData: foodType;
@@ -55,13 +55,13 @@ const DetailFoodCard = ({ foodData }: Props) => {
             }`}
           >
             {foodData.count > 0 ? (
-              <BsX className="text-2xl" />
+              <XMarkIcon className="text-2xl" />
             ) : (
-              <BsPlus className="text-2xl" />
+              <PlusIcon className="text-2xl" />
             )}
           </button>
           <span className="flex items-center gap-2 ">
-            <BsStarFill className="text-amber-600 font-lg" />
+            <StarFillIcon className="text-amber-600 font-lg" />
             4.5
           </span>
         </div>

@@ -2,8 +2,8 @@ import Header from "../components/essentials/Header";
 import supabase from "../../utils/supabase";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { RiLogoutBoxLine,RiArrowLeftLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { BackButton, LogoutIcon } from "../components/essentials/Icons";
 
 type profileType = {
   id: string;
@@ -82,7 +82,6 @@ const ProfilePage = () => {
     const nameInput = nameRef.current.value;
     const addressInput = addressRef.current.value;
     const phoneInput = phoneRef.current.value;
-    console.log(phoneInput);
 
     if(nameInput === profile?.full_name && addressInput === profile?.address && phoneInput === profile?.phone){
       navigate('/foods');
@@ -136,11 +135,7 @@ const ProfilePage = () => {
     <main className="w-screen h-screen flex justify-center items-center">
       <Header />
       <div className="flex flex-col w-[70%] shadow-lg p-4 gap-2">
-        <button onClick={()=>{
-          navigate(-1);
-        }} className="text-lg text-primary-green">
-          <RiArrowLeftLine />
-        </button>
+        <BackButton/>
         <h1 className="text-primary-green font-semibold mx-auto uppercase text-lg">
           My Profile
         </h1>
@@ -196,7 +191,7 @@ const ProfilePage = () => {
             onClick={Logout}
             className="flex items-center gap-2 text-primary-green hover:text-green-600"
           >
-            Logout <RiLogoutBoxLine />
+            Logout <LogoutIcon />
           </button>
           <div className="flex gap-2">
             {/* Edit */}
