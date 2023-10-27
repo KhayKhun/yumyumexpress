@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { foodType, sellerType } from "../../constants/global.types";
-import supabase from "../../../utils/supabase";
+import supabase from "../../lib/supabase";
 import { Link } from "react-router-dom";
 import { toSlug } from "../../constants/functions";
 import { ResturantIcon, StarFillIcon } from "../essentials/Icons";

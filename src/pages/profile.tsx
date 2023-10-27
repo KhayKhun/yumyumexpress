@@ -1,5 +1,5 @@
 import Header from "../components/essentials/Header";
-import supabase from "../../utils/supabase";
+import supabase from "../lib/supabase";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -72,51 +72,55 @@ const ProfilePage = () => {
           response.data.session?.user.id,
           response.data.session?.user.email
         );
-      }else{
-        navigate('/')
+      } else {
+        navigate("/");
       }
     });
   }, []);
 
   const SaveFunction = () => {
+    console.log("fn called");
     const nameInput = nameRef.current.value;
     const addressInput = addressRef.current.value;
     const phoneInput = phoneRef.current.value;
-
-    if(nameInput === profile?.full_name && addressInput === profile?.address && phoneInput === profile?.phone){
-      navigate('/foods');
+    if (
+      nameInput === profile?.full_name &&
+      addressInput === profile?.address &&
+      phoneInput === profile?.phone
+    ) {
+      navigate("/");
       return;
     }
-
     if (nameInput.length < 5) {
+      console.log("con1");
       setError((prev) => ({ ...prev, name: true }));
       return;
-    } else if (phoneInput !== "") {
-      setError((prev) => ({ ...prev, name: false }));
-      if (isNaN(phoneInput) || phoneInput.length !== 10) {
-        setError((prev) => ({ ...prev, phone: true }));
-      } else {
-        // No error
-        const updateProfile = async () => {
-          const { error } = await supabase
-            .from("profiles")
-            .update({
-              full_name: nameInput,
-              phone: phoneInput,
-              address: addressInput,
-            })
-            .eq("id", profile?.id)
-            .select();
+    }
+    if (Number(phoneInput) && phoneInput.length == 10) {
+      console.log("no error detected");
+      // No error
+      const updateProfile = async () => {
+        console.log("updateProfile");
+        const { error } = await supabase
+          .from("profiles")
+          .update({
+            full_name: nameInput,
+            phone: phoneInput,
+            address: addressInput,
+          })
+          .eq("id", profile?.id)
+          .select();
 
-          if(error) {
-            console.log(error);
-            return;
-          }
-          navigate('/foods');
+        if (error) {
+          console.log(error);
+          return;
         }
-        updateProfile();
-        
-      }
+        navigate("/");
+      };
+      updateProfile();
+    } else {
+      console.log("con3");
+      setError((prev) => ({ ...prev, phone: true }));
     }
   };
 
@@ -135,7 +139,7 @@ const ProfilePage = () => {
     <main className="w-screen h-screen flex justify-center items-center">
       <Header />
       <div className="flex flex-col w-[70%] shadow-lg p-4 gap-2">
-        <BackButton/>
+        <BackButton />
         <h1 className="text-primary-green font-semibold mx-auto uppercase text-lg">
           My Profile
         </h1>
@@ -199,10 +203,13 @@ const ProfilePage = () => {
               className="green-btn-border"
               disabled={edit === "true"}
               onClick={() => {
-                setSearchParams((prev: any) => {
-                  prev.set("edit", "true");
-                  return prev;
-                },{replace : true});
+                setSearchParams(
+                  (prev: any) => {
+                    prev.set("edit", "true");
+                    return prev;
+                  },
+                  { replace: true }
+                );
               }}
             >
               Edit

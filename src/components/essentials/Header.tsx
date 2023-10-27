@@ -4,7 +4,7 @@ import type { foodType } from "../../constants/global.types";
 import { Link } from "react-router-dom";
 import AuthComponent from "../auth/AuthComponent";
 import { toSlug } from "../../constants/functions";
-import { CartIcon, HeartLineIcon } from "./Icons";
+import { CartIcon, HeartLineIcon, HistoryIcon } from "./Icons";
 
 const Header = () => {
   const firstRender = useRef(true);
@@ -39,6 +39,9 @@ const Header = () => {
       </Link>
 
       <ul className="flex gap-7 items-center text-2xl">
+        <Link to="/history">
+          <HistoryIcon />
+        </Link>
         <AuthComponent />
         <Link to="/favorites">
           <HeartLineIcon />
@@ -47,7 +50,7 @@ const Header = () => {
           to={lastResturantSlug() !== "" ? lastResturantSlug() : "/foods"}
           className="relative"
         >
-          <CartIcon/>
+          <CartIcon />
           <div
             className={`absolute top-[-10px] right-[-10px] bg-red-600 rounded-full w-[20px] h-[20px] text-white text-sm flex justify-center items-center ${
               filteredFoods?.length === 0 && "hidden"

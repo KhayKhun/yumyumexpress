@@ -1,24 +1,21 @@
 import { useParams } from "react-router-dom";
-import supabase from "../../../utils/supabase";
-import { useEffect, useState, useRef } from "react";
+import supabase from "../../lib/supabase";
+import { useEffect,  useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import type { sellerType, foodType } from "../../constants/global.types";
+import type { foodType } from "../../constants/global.types";
 import DetailFoodCard from "../foods/DetailFoodCard";
 import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
 import Header from "../essentials/Header";
 import { BackButton, HeartLineIcon, StarFillIcon } from "../essentials/Icons";
-// import { useSearchParams } from "react-router-dom";
+import { useSellerStore } from "../../states/resturantState";
 
 const SingleResturant = () => {
-  // const [searchParams,setSearchParams] = useSearchParams();
-  // const popup = searchParams.get("popup");
-
+  const setSeller = useSellerStore((state:any) => state.setSeller)
+  const seller = useSellerStore((state:any) => state.seller)
   const navigate = useNavigate();
   const { resturantSlug } = useParams();
-
-  const [seller, setSeller] = useState<sellerType | null>(null);
 
   const firstRender = useRef(true);
 
@@ -74,6 +71,7 @@ const SingleResturant = () => {
       return;
     }
     if (data.length === 0) {
+    
       navigate("/foods");
       return;
     }
@@ -134,7 +132,7 @@ const SingleResturant = () => {
       </section>
       {/* Cart */}
       <div className="sticky flex-1 h-screen top-0 right-0">
-        <Cart name={seller?.name} address={seller?.address} />
+        <Cart resturantName={seller?.name} address={seller?.address} />
       </div>
     </main>
   );

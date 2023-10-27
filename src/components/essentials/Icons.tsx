@@ -6,7 +6,16 @@ import {
   RiHeart3Line,
   RiLogoutBoxLine,
 } from "react-icons/ri";
-import { BsBag, BsCart2, BsStarFill,BsShopWindow, BsPlus,BsDash, BsX } from "react-icons/bs";
+import {
+  BsBag,
+  BsCart2,
+  BsStarFill,
+  BsShopWindow,
+  BsPlus,
+  BsDash,
+  BsX,
+  BsClockHistory,
+} from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
 interface IconProps {
@@ -45,6 +54,9 @@ export const ResturantIcon: React.FC<IconProps> = ({ className }) => (
 );
 export const LogoutIcon: React.FC<IconProps> = ({ className }) => (
   <RiLogoutBoxLine className={className} />
+);
+export const HistoryIcon: React.FC<IconProps> = ({ className }) => (
+  <BsClockHistory className={className} />
 );
 
 export const BackButton = () => {
