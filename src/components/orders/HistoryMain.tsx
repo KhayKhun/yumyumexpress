@@ -1,6 +1,6 @@
 import supabase from "@/lib/supabase";
 import { useAuthStore } from "@/states/authState";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Header from "../essentials/Header";
 import { orderType } from "@/constants/global.types";
 import { formatRelativeDate } from "@/constants/functions";

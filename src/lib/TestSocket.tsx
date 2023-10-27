@@ -10,8 +10,7 @@ export default function TestSocket() {
     console.log("joined")
   }
   useEffect(() => {
-    socket.on("nice", (message: string) => {
-      
+    socket.on("nice", () => {
       toast({
         title: "Success",
         description:
@@ -20,7 +19,7 @@ export default function TestSocket() {
       console.log('placed order');
     });
 
-    socket.on("approved", (order: any) => {
+    socket.on("approved", () => {
       console.log('approved');
       toast({
         title : "Order successfully approved",

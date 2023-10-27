@@ -10,7 +10,7 @@ export type foodType = {
     count: number;
 }
 
-export type resturantType = {
+export type sellerType = {
     id: number;
     name: string;
     opens_at: any;
