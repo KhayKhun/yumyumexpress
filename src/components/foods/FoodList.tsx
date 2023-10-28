@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingFoods from "../essentials/LoadingFoods";
 
 const peginationCount = 6;
-const oneTimeFetchCount = 5;
+const oneTimeFetchCount = 9;
 
 const FoodList = () => {
   const foods = useFoodStore((state: any) => state.foods);
@@ -48,7 +48,7 @@ const FoodList = () => {
         loader={<LoadingFoods/>}
         endMessage={<hr/>}
       >
-        <ul className="grid grid-cols-3 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {foods?.map((food: foodType) => {
             return <FoodCard key={food.id} foodData={food} />;
           })}

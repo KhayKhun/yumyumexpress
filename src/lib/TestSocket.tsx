@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import socket from "./socket";
 import { useToast } from "@/components/ui/use-toast";
+import supabase from "./supabase";
 
 
 export default function TestSocket() {
@@ -19,19 +20,47 @@ export default function TestSocket() {
       console.log('placed order');
     });
 
-    socket.on("approved", () => {
-      console.log('approved');
-      toast({
-        title : "Order successfully approved",
-        description : "Your order has been approved. The foods will be delivered ASAP."
-      })
+    socket.on("approved", (prop) => {
+      async function fetchSeller() {
+        const { data, error } = await supabase
+          .from("sellers")
+          .select("*")
+          .eq("id", prop.seller_id);
+
+        if (error) {
+          console.log(error);
+          return;
+        }
+        if (data[0]) {
+          console.log(data);
+          toast({
+            title: "Your order is accepted by " + data[0].name + "! :)",
+            description: "message: "+ "We'll delivered your foods ASAP.",
+          });
+        }
+      }
+      fetchSeller();
     });
-    socket.on("rejected", (order: any) => {
-      console.log('rejected');
-      toast({
-        title : "Sorry, a resturant rejected your order",
-        description : order?.message ? order.message : '' 
-      })
+    socket.on("rejected", (prop: any) => {
+      async function fetchSeller() {
+        const { data, error } = await supabase
+          .from("sellers")
+          .select("*")
+          .eq("id", prop.seller_id);
+
+        if (error) {
+          console.log(error);
+          return;
+        }
+        if (data[0]) {
+          console.log(data);
+          toast({
+            title: "Order rejected by " + data[0].name + "! :(",
+            description: "message: " + prop?.message,
+          });
+        }
+      }
+      fetchSeller();
     });
   }, [socket]);
 

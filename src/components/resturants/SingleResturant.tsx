@@ -8,8 +8,9 @@ import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
 import Header from "../essentials/Header";
-import { BackButton, HeartLineIcon, StarFillIcon } from "../essentials/Icons";
+import { HeartLineIcon, StarFillIcon } from "../essentials/Icons";
 import { useSellerStore } from "../../states/resturantState";
+import NavigateBar from "../essentials/NavigateBar";
 
 const SingleResturant = () => {
   const setSeller = useSellerStore((state:any) => state.setSeller)
@@ -94,10 +95,9 @@ const SingleResturant = () => {
   return (
     <main className="flex w-screen bg-gray-100">
       <Header />
-      <section className="w-[64%]">
+      <section className="w-full sm:w-[64%]">
         {/* Head */}
-        <div className="relative w-full p-[40px] bg-primary-green bg-opacity-10">
-          <BackButton/>
+        <div className="relative w-full p-[10px] sm:p-[40px] bg-primary-green bg-opacity-10">
           {seller?.image && (
             <img
               src={seller?.image}
@@ -107,31 +107,45 @@ const SingleResturant = () => {
           )}
           {/* Detail functions */}
           <div className="relative z-10">
-            <h1 className="text-3xl font-bold tracking-wide">{seller?.name}</h1>
-            <p>{seller?.address}</p>
-            <button className="hover:underline flex items-center gap-1">
+            <NavigateBar
+              links={[
+                {
+                  display: "Home",
+                  link: "/",
+                },
+                {
+                  display: seller?.name,
+                  link: "/resturants/" + seller?.slug,
+                },
+              ]}
+            />
+            <h1 className="text-lg sm:text-3xl font-bold tracking-wide">
+              {seller?.name}
+            </h1>
+            <p className="text-sm sm:text-base">{seller?.address}</p>
+            <button className="hover:underline flex items-center gap-1 text-sm sm:text-base">
               <StarFillIcon className="text-amber-500" />
               4.5 (25)
             </button>
-            <div className="flex gap-1">
+            <div className="flex gap-1 text-sm sm:text-base">
               <p>Asian</p>|<p>Chinese</p>|<p>Vegetarian</p>|<p>Salad</p>|
             </div>
             <div className="w-full flex justify-end">
-              <button className="flex gap-2 items-center text-green-800 border border-green-800 p-2 rounded-lg">
+              <button className="flex gap-2 items-center text-green-800 border border-green-800 p-2 text-[12px] sm:text-base rounded-lg">
                 Save Resturant <HeartLineIcon className="" />
               </button>
             </div>
           </div>
         </div>
         {/* Foods */}
-        <ul className="grid grid-cols-2 px-[40px] py-3 gap-3">
+        <ul className="grid grid-cols-1 md:grid-cols-2 px-[10px] sm:px-[40px] py-3 gap-3">
           {selectedFoods?.map((food: foodType) => (
             <DetailFoodCard key={food.id} foodData={food} />
           ))}
         </ul>
       </section>
       {/* Cart */}
-      <div className="sticky flex-1 h-screen top-0 right-0">
+      <div className="sticky flex-1 h-screen top-0 right-0 sm:block hidden">
         <Cart resturantName={seller?.name} address={seller?.address} />
       </div>
     </main>

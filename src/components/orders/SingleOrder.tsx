@@ -7,6 +7,7 @@ import { orderType } from "@/constants/global.types";
 import { formatRelativeDate } from "@/constants/functions";
 import { useAuthStore } from "@/states/authState";
 import ErrorPage from "../essentials/ErrorPage";
+import NavigateBar from "../essentials/NavigateBar";
 const SingleOrder = () => {
   const [items, setItems] = useState<any[]>([]);
   const [order, setOrder] = useState<orderType | null>(null);
@@ -66,6 +67,22 @@ const SingleOrder = () => {
     <>
       {!error && Number(orderId) ? (
         <main className="w-full h-full max-h-[70vh] flex flex-col gap-2 pt-2 mb-4">
+          <NavigateBar
+            links={[
+              {
+                display: "Home",
+                link: "/",
+              },
+              {
+                display: "History",
+                link: "/history",
+              },
+              {
+                display: order?.id?.toString() || '' ,
+                link: "/history/"+ order?.id,
+              },
+            ]}
+          />
           <hr />
           <div className="text-gray-700 text-[13px]">
             <p className="">Name: {order?.profiles.full_name}</p>
@@ -171,7 +188,7 @@ const SingleOrder = () => {
           </div>
         </main>
       ) : (
-        <ErrorPage/>
+        <ErrorPage />
       )}
     </>
   );

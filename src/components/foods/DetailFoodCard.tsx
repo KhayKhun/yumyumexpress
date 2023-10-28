@@ -14,14 +14,14 @@ const DetailFoodCard = ({ foodData }: Props) => {
 
   return (
     <li
-    id={foodData.id.toString()}
-      className={`border flex items-center overflow-hidden rounded-lg  ${
+      id={foodData.id.toString()}
+      className={`border flex items-center overflow-hidden hover:shadow-lg hover:rotate-1  ${
         foodData.count > 0
           ? "outline outline-1 outline-green-500 bg-green-50 opacity-50"
           : "bg-white"
       }`}
     >
-      <div className="w-[150px] h-full">
+      <div className="w-[30vw] sm:w-[150px] h-full">
         <img
           src={foodData.image}
           alt="food image"
@@ -29,14 +29,14 @@ const DetailFoodCard = ({ foodData }: Props) => {
         />
       </div>
       {/* text area */}
-      <div className="w-full px-4 py-2 flex flex-col gap-3 justify-between">
+      <div className="w-full px-4 py-2 flex flex-col gap-3 justify-between text-sm sm:text-base">
         {/* Title */}
-        <div className="flex flex-col gap-2">
-          <span className="text-gray-500 font-semibold text-lg tracking-wider">
-            <span className="tracking-normal">MMK</span> 
+        <div className="flex flex-col sm:gap-2">
+          <span className="text-gray-500 font-semibold text-sm sm:text-lg tracking-wider">
+            <span className="tracking-normal">MMK</span>
             {foodData.price}
           </span>
-          <h1 className="font-semibold text-base tracking-wide leading-4">
+          <h1 className="font-semibold tracking-wide sm:leading-4">
             {foodData.name}
           </h1>
           <p className="text-gray-500">{foodData.description}</p>

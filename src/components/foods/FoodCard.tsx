@@ -9,6 +9,18 @@ type Props = {
   foodData: foodType;
 };
 
+function splitTitle(title: any){
+  if(title){
+    if (title.length > 12) {
+      return title.substring(0, 12) + "...";
+    } else {
+      return title;
+    }
+  }else{
+    return '';
+  }
+}
+
 const FoodCard = ({ foodData }: Props) => {
   const [seller, setSeller] = useState<sellerType | null>(null);
   useEffect(() => {
@@ -28,8 +40,14 @@ const FoodCard = ({ foodData }: Props) => {
   }, []);
 
   return (
-    <li className="border flex rounded-lg overflow-hidden">
-      <div className="w-[150px] h-full bg-gray-300">
+    <Link
+      to={{
+        pathname: `/resturants/${toSlug(seller?.name)}`,
+        search: `?popup=none`,
+      }}
+      className="border flex overflow-hidden hover:shadow-lg hover:rotate-1"
+    >
+      <div className="w-[75px] md:w-[150px] h-full bg-gray-300">
         <img
           src={foodData.image}
           alt=""
@@ -37,32 +55,27 @@ const FoodCard = ({ foodData }: Props) => {
         />
       </div>
       {/* text area */}
-      <div className="w-full px-4 py-2 flex flex-col justify-between">
+      <div className="w-full px-4 py-2 flex flex-col justify-between text-sm sm:text-base">
         {/* Title */}
         <div>
-          <span className="text-gray-500 font-semibold text-xl tracking-widest">
-            <span className="tracking-normal">MMK</span> 
+          <h1 className=" font-semibold leading-4">{foodData.name}</h1>
+          <span className="text-gray-500 tracking-wider">
+            <span className="tracking-normal">MMK </span>
             {foodData.price}
           </span>
-          <h1 className="font-bold text-lg tracking-wide leading-6">
-            {foodData.name}
-          </h1>
         </div>
         {/* Details */}
-        <div className="w-full flex flex-row-reverse justify-between">
-          <Link
-            to={{pathname : `/resturants/${toSlug(seller?.name)}`,search : `?popup=none`}}
-            className="hover:text-primary-green text-white transition-all duration-100 bg-primary-green hover:bg-white flex font-semibold text-sm items-center gap-3 border-0 hover:border border-primary-green rounded-lg p-2"
-          >
-            {seller?.name} <ResturantIcon />
-          </Link>
-          <span className="flex items-center gap-2 ">
-            <StarFillIcon className="text-amber-600 font-lg" />
-            4.5
-          </span>
-        </div>
+        {/* <div className="w-full flex flex-row-reverse justify-between"> */}
+        <span className="flex items-center gap-2 ">
+          <StarFillIcon className="text-amber-600 font-lg" />
+          4.5
+        </span>
+        <button className="underline text-primary-green transition-all duration-100 flex font-semibold justify-end text-sm items-center gap-3">
+          {splitTitle(seller?.name)} <ResturantIcon />
+        </button>
+        {/* </div> */}
       </div>
-    </li>
+    </Link>
   );
 };
 

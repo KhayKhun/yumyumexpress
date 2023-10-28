@@ -118,7 +118,7 @@ const Cart = ({ resturantName, address }: any) => {
     }
   },[user]);
   return (
-    <main className=" w-full h-full bg-white border-l border-primary-green px-3 flex flex-col gap-2">
+    <main className=" w-full h-full bg-white border-0 sm:border-l border-primary-green px-1 sm:px-3 flex flex-col gap-2">
       <h1 className="flex gap-2 font-semibold mx-auto text-xl items-center text-primary-green">
         My Cart <ShoppingBagIcon />
       </h1>
@@ -140,7 +140,7 @@ const Cart = ({ resturantName, address }: any) => {
           }}
         />
       </div>
-      <ul className="overflow-y-auto p-4 min-h-[100px] h-[40vh] border-t border-b bg-gray-50">
+      <ul className="overflow-y-auto sm:p-4 min-h-[100px] h-[40vh] border-t border-b bg-gray-50">
         {filteredFoods?.reverse().map((food: foodType) => (
           <FoodCardInCart key={food.id} foodData={food} />
         ))}
@@ -178,13 +178,13 @@ const Cart = ({ resturantName, address }: any) => {
           >
             Review Receipt
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="text-sm sm:text-base">
             <DialogHeader>
-              <DialogTitle className="m-auto">
+              <DialogTitle className="m-auto text-sm sm:text-base">
                 Orders from {resturantName}
               </DialogTitle>
             </DialogHeader>
-            <div className="max-h-[40vh]">
+            <div className="max-h-[50vh]">
               <ReceiptReview
                 receiptData={{
                   username: user?.user_metadata.name,
@@ -202,19 +202,19 @@ const Cart = ({ resturantName, address }: any) => {
             </div>
             <input
               type="text"
-              className="border p-3 rounded-lg"
+              className="border p-2 sm:p-3 rounded-lg text-sm sm:text-base"
               placeholder="special message (optional)"
-              onChange={(e)=>{
-                setCustomerMessage(e.target.value)
+              onChange={(e) => {
+                setCustomerMessage(e.target.value);
               }}
             />
             <div className="flex justify-between">
-              <DialogClose className="h-10 px-4 py-2 hover:bg-accent hover:text-accent-foreground rounded-lg border">
+              <DialogClose className="h-10 px-4 py-2 text-sm sm:text-base hover:bg-accent hover:text-accent-foreground rounded-lg border">
                 Cancel
               </DialogClose>
               <Button
                 onClick={submitOrder}
-                className="bg-primary-green text-white px-7 hover:bg-green-500"
+                className="bg-primary-green text-white px-7 hover:bg-green-500 text-sm sm:text-base"
               >
                 Order
               </Button>

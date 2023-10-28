@@ -12,7 +12,7 @@ type Props = {
 };
 const ReceiptReview = ({ receiptData }: Props) => {
   return (
-    <main className="w-full h-full max-h-[70vh] overflow-auto ">
+    <main className="w-full h-full max-h-[70vh] overflow-auto text-sm sm:text-base">
       <p className="flex border border-green-200 p-2 text-gray-600 bg-gray-50 rounded-lg">
           To: {receiptData.username} ({receiptData.address})
       </p>

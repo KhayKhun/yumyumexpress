@@ -16,8 +16,8 @@ const FoodCardInCart = ({ foodData }: Props) => {
   );
 
   return (
-    <li className="flex items-center px-2 overflow-hidden">
-      <div className="w-[70px] h-[70px] bg-gray-300 rounded-lg overflow-hidden">
+    <li className="flex items-center px-0 sm:px-2 overflow-hidden">
+      <div className="w-[45px] sm:w-[70px] h-[45px] sm:h-[70px] bg-gray-300 rounded-lg overflow-hidden">
         <img
           src={foodData.image}
           alt="food image"
@@ -25,21 +25,21 @@ const FoodCardInCart = ({ foodData }: Props) => {
         />
       </div>
       {/* text area */}
-      <div className="w-full px-4 py-2 flex flex-col gap-3 justify-between">
+      <div className="w-full px-4 py-2 flex flex-col sm:gap-3 justify-between">
         {/* Title */}
         <div className="flex flex-col gap-1">
-          <h1 className="font-semibold text-sm tracking-wide leading-4">
+          <h1 className="font-semibold text-[13px] sm:text-sm tracking-wide sm:leading-4">
             {foodData.name}
           </h1>
-          <span className="text-gray-400 font-semibold text-sm tracking-wide">
-            <span className="tracking-normal">MMK</span>
+          <span className="text-gray-400 sm:font-semibold text-[13px] sm:text-sm tracking-wide">
+            <span className="tracking-normal">MMK </span>
             {foodData.price}
           </span>
         </div>
         {/* Details */}
         <hr />
         <section className="w-full flex justify-between">
-          <div className="flex gap-2 justify-between border border-primary-green px-1 bg-white shadow-md">
+          <div className="flex gap-1 sm:gap-2 items-center justify-between border border-primary-green px-1 bg-white shadow-md">
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -60,7 +60,7 @@ const FoodCardInCart = ({ foodData }: Props) => {
               <PlusIcon className="text-2xl" />
             </button>
           </div>
-          <span className=" text-gray-700 font-semibold text-sm tracking-wide">
+          <span className=" text-gray-700 sm:font-semibold text-[12px] sm:text-sm tracking-wide">
             <span className="tracking-normal">MMK </span>
             {foodData.price * foodData.count}{" "}
           </span>

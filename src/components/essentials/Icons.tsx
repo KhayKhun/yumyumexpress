@@ -17,6 +17,7 @@ import {
   BsClockHistory,
 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
+import { BiChevronRight } from "react-icons/bi";
 
 interface IconProps {
   className ?: string;
@@ -57,6 +58,9 @@ export const LogoutIcon: React.FC<IconProps> = ({ className }) => (
 );
 export const HistoryIcon: React.FC<IconProps> = ({ className }) => (
   <BsClockHistory className={className} />
+);
+export const SmallRightArrowIcon: React.FC<IconProps> = ({ className }) => (
+  <BiChevronRight className={className} />
 );
 
 export const BackButton = () => {

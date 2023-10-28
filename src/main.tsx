@@ -7,7 +7,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import FoodsPage from "./pages/foods.tsx";
-import ResturantsPage from "./pages/resturants.tsx";
 import SingleResturant from "./components/resturants/SingleResturant.tsx";
 import ProfilePage from "./pages/profile.tsx";
 import HistoryPage from "./pages/history.tsx";
@@ -30,10 +29,6 @@ const router = createBrowserRouter([
   {
     path: "history/*",
     element: <HistoryPage/>,
-  },
-  {
-    path : "resturants",
-    element : <ResturantsPage/>
   },
   {
     path : "resturants/:resturantSlug",

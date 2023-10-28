@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import ResturantName from "./ResturantName";
 import { useNavigate } from "react-router-dom";
 import { userOrderStore } from "@/states/orderState";
+import NavigateBar from "../essentials/NavigateBar";
 const HistoryMain = () => {
   const navigate = useNavigate();
   const orders = userOrderStore((state:any) => state.orders);
@@ -31,6 +32,16 @@ const HistoryMain = () => {
   return (
     <div className="mt-[60px] px-[40px]">
       <Header />
+      <NavigateBar links={[
+        {
+          display : 'Home',
+          link : '/'
+        },
+        {
+          display : 'History',
+          link : '/history'
+        },
+      ]}/>
       <Table>
         <TableBody className="w-full h-full">
           {orders
@@ -71,7 +82,7 @@ const HistoryMain = () => {
                       {order.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-gray-700">
+                  <TableCell className="text-gray-700 md:block hidden">
                     {order?.message}
                   </TableCell>
                 </TableRow>
