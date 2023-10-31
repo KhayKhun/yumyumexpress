@@ -4,6 +4,7 @@ import { useAuthStore } from "../../states/authState";
 import { Link } from "react-router-dom";
 import { UserIcon } from "../essentials/Icons";
 import TestSocket from "@/lib/TestSocket";
+import { requestAudioPermission } from "@/constants/functions";
 function AuthComponent() {
   const {JoinSocket} = TestSocket();
   const user = useAuthStore((state: any) => state.user);
@@ -17,6 +18,10 @@ function AuthComponent() {
       return;
     }
   };
+
+  useEffect(()=>{
+    requestAudioPermission();
+  },[])
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(

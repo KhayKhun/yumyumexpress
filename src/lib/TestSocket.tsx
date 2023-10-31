@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import socket from "./socket";
 import { useToast } from "@/components/ui/use-toast";
 import supabase from "./supabase";
+import { playNotificationSound } from "@/constants/functions";
 
 
 export default function TestSocket() {
@@ -33,6 +34,7 @@ export default function TestSocket() {
         }
         if (data[0]) {
           console.log(data);
+          playNotificationSound();
           toast({
             title: "Your order is accepted by " + data[0].name + "! :)",
             description: "message: "+ "We'll delivered your foods ASAP.",
@@ -54,6 +56,7 @@ export default function TestSocket() {
         }
         if (data[0]) {
           console.log(data);
+          playNotificationSound();
           toast({
             title: "Order rejected by " + data[0].name + "! :(",
             description: "message: " + prop?.message,
