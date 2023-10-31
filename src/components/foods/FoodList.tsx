@@ -18,9 +18,10 @@ const FoodList = () => {
 
   async function getFoods() {
     const { data, error } = await supabase
-      .from("products")
+      .from("random_foods")
       .select()
       .range(pegination, pegination + oneTimeFetchCount);
+      
     if (error) {
       console.log(error);
       return;

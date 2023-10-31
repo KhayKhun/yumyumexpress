@@ -21,10 +21,9 @@ const DetailFoodCard = ({ foodData }: Props) => {
           : "bg-white"
       }`}
     >
-      <div className="w-[30vw] sm:w-[150px] h-full">
+      <div className="w-[30vw] sm:w-[150px] h-full bg-gray-200 overflow-hidden border-0">
         <img
           src={foodData.image}
-          alt="food image"
           className="w-full h-full object-cover"
         />
       </div>

@@ -8,9 +8,10 @@ import Cart from "../essentials/Cart";
 import { useSelectedFoodStore } from "../../states/foodState";
 import { merge } from "../../constants/functions";
 import Header from "../essentials/Header";
-import { HeartLineIcon, StarFillIcon } from "../essentials/Icons";
+import {  StarFillIcon } from "../essentials/Icons";
 import { useSellerStore } from "../../states/resturantState";
 import NavigateBar from "../essentials/NavigateBar";
+import SaveResturant from "./SaveResturant";
 
 const SingleResturant = () => {
   const setSeller = useSellerStore((state:any) => state.setSeller)
@@ -91,7 +92,6 @@ const SingleResturant = () => {
       fetchFoods();
     }
   }, [seller]);
-
   return (
     <main className="flex w-screen bg-gray-100">
       <Header />
@@ -128,12 +128,12 @@ const SingleResturant = () => {
               4.5 (25)
             </button>
             <div className="flex gap-1 text-sm sm:text-base">
-              <p>Asian</p>|<p>Chinese</p>|<p>Vegetarian</p>|<p>Salad</p>|
+              <p>
+                {seller?.opens_at} - {seller?.closes_at}
+              </p>
             </div>
             <div className="w-full flex justify-end">
-              <button className="flex gap-2 items-center text-green-800 border border-green-800 p-2 text-[12px] sm:text-base rounded-lg">
-                Save Resturant <HeartLineIcon className="" />
-              </button>
+              <SaveResturant/>
             </div>
           </div>
         </div>

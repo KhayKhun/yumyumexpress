@@ -4,7 +4,7 @@ import type { foodType } from "../../constants/global.types";
 import { Link } from "react-router-dom";
 import AuthComponent from "../auth/AuthComponent";
 import { toSlug } from "../../constants/functions";
-import { CartIcon, HistoryIcon } from "./Icons";
+import { CartIcon, HeartLineIcon, HistoryIcon } from "./Icons";
 import Cart from "./Cart";
 import {
   Sheet,
@@ -52,9 +52,9 @@ const Header = () => {
           <HistoryIcon />
         </Link>
         <AuthComponent />
-        {/* <Link to="/favorites">
-          <HeartLineIcon />
-        </Link> */}
+        <Link to="/favourites">
+          <HeartLineIcon/>
+        </Link>
         <Link
           to={lastResturantSlug() !== "" ? lastResturantSlug() : "/foods"}
           className="relative hidden sm:block"

@@ -12,7 +12,7 @@ const NavigateBar = ({links} : {links : LinkType[]}) => {
         {
             links.map((link) => {
                 return (
-                  <div className="flex gap-1 items-center">
+                  <div key={link.link} className="flex gap-1 items-center">
                     <SmallRightArrowIcon />
                     <Link to={link.link}>{link.display}</Link>
                   </div>

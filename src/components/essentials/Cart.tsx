@@ -106,7 +106,6 @@ const Cart = ({ resturantName, address }: any) => {
       console.log(error);
       return;
     }
-    console.log(data);
     if(data.length > 0){
       setCurrentAddress(data[0].address)
     }

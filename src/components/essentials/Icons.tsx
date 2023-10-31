@@ -5,6 +5,7 @@ import {
   RiArrowLeftLine,
   RiHeart3Line,
   RiLogoutBoxLine,
+  RiHeart3Fill,
 } from "react-icons/ri";
 import {
   BsBag,
@@ -34,6 +35,9 @@ export const EditIcon: React.FC<IconProps> = ({ className }) => (
 );
 export const HeartLineIcon: React.FC<IconProps> = ({ className }) => (
   <RiHeart3Line className={className} />
+);
+export const HeartFillIcon: React.FC<IconProps> = ({ className }) => (
+  <RiHeart3Fill className={className} />
 );
 export const StarFillIcon: React.FC<IconProps> = ({ className }) => (
   <BsStarFill className={className} />

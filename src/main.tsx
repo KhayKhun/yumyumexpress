@@ -11,6 +11,7 @@ import SingleResturant from "./components/resturants/SingleResturant.tsx";
 import ProfilePage from "./pages/profile.tsx";
 import HistoryPage from "./pages/history.tsx";
 import { Toaster } from "@/components/ui/toaster";
+import Favoutites from "./pages/favourites.tsx";
 
 const MarginGap = () => <div className="mb-[60px]" />;
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "history/*",
     element: <HistoryPage/>,
+  },
+  {
+    path: "favourites",
+    element: <Favoutites/>,
   },
   {
     path : "resturants/:resturantSlug",

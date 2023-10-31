@@ -30,7 +30,7 @@ const HistoryMain = () => {
     if (user?.id) fetchOrders();
   }, [user]);
   return (
-    <div className="mt-[60px] px-[40px]">
+    <div className="mt-[60px] px-[10px] md:px-[40px]">
       <Header />
       <NavigateBar links={[
         {
